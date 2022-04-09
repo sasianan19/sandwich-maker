@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.views import View
 
+ingredients = {
+    'meats': ['corned beef', 'pastrami', 'honey turkey', 'pepper steak', 'veggie burger'],
+    'cheeses': ['american', 'swiss', 'provolone', 'cheddar', 'mozzarella'],
+    'toppings': ['lettuce', 'tomato', 'onions', 'peppers', 'pickles']
+}
+
 # Create your views here.
 class SandwichappView(View):
     def get(self, request):

@@ -10,15 +10,18 @@
     <div>
         <h1>Sandwich Home</h1>
 
-        <p>Ingredients:</p>
+        <h3>Ingredients:</h3>
+
+        {% for ingredient in ingredients %}
         <ul>
-            <li><a href="#">Meats</a></li>
-            <li><a href="#">Cheeses</a></li>>
-            <li><a href="#">Toppings</a></li>>
+            <li><a href="/sandwich/ingredients/{{ ingredient }}">{{ ingredient }}</a></li>
+        {% endfor %}
         </ul>
 
         <p>Click button if you're hungry!</p>
-        <button type="submit"> Make My Sandwich!</button>
+        <form action="/sandwich/randon">
+            <input type="submit" value="Make My Sandwich!"/>
+        </form>
     </div>
 </body>
 </html>
