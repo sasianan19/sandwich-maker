@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandwich</title>
+</head>
+<body>
+    <div>
+        <h1>{{ sandwich|title }}</h1>
+
+        <p>Click below to make another sandwich!</p>
+        <form action="{% url 'sandwich_generator' %}"">
+            <input type="submit" value="Make Me Another Sandwich!" />
+        </form>
+
+        <p>Click the link below to return home.</p>
+        <a href="/sandwich/">Return Home</a>
+    </div>
+</body>
+</html>

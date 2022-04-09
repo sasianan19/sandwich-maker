@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import Http404
 from django.views import View
+from django.http import Http404
+import random
 
 
 ingredients = {
@@ -31,3 +32,13 @@ class IngredientsListView(View):
             template_name = 'ingredients_list.html',
             context = {'ingredients': ingredients[ingredient_type], 'ingredient_type': ingredient_type}
         )
+
+class SandwichGeneratorView(View):
+    def get(self, request):
+        if request.method == 'GET':
+            selected_meat = random.choice(ingredients['meats'])
+            selected_cheese = random.choice(ingredients['cheeses'])
+            selected_topping = random.choice(ingredients['toppings'])
+
+            sandwich = f'{selected_meat} & {selected_cheese} & {selected_topping}'
+            return render(request, 'sandwich_generator.html', context = {'sandwich': sandwich})

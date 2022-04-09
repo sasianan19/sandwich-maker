@@ -14,12 +14,12 @@
 
         {% for ingredient in ingredients %}
         <ul>
-            <li><a href="/sandwich/ingredients/{{ ingredient }}">{{ ingredient }}</a></li>
+            <li><a href="{% url 'ingredients_list' ingredient %}">{{ ingredient }}</a></li>
         {% endfor %}
         </ul>
 
         <p>Click button if you're hungry!</p>
-        <form action="/sandwich/randon">
+        <form action="{% url 'sandwich_generator' %}">
             <input type="submit" value="Make My Sandwich!"/>
         </form>
     </div>
