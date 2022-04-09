@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import Http404
 from django.views import View
+
 
 ingredients = {
     'meats': ['corned beef', 'pastrami', 'honey turkey', 'pepper steak', 'veggie burger'],
@@ -17,8 +19,13 @@ class SandwichappView(View):
                 context = {'ingredients': ingredients.keys()}
                 )
 
+
 class IngredientsListView(View):
     def get(self, request, ingredient_type):
+        if request.method == 'GET':
+            if ingredient_type not in ingredients:
+                raise Http404(f'No such ingredient: {ingredient_type}')
+
         return render(
             request = request,
             template_name = 'ingredients_list.html',
